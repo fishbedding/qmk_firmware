@@ -204,6 +204,42 @@ void host_joystick_send(joystick_t *joystick) {
 #        if JOYSTICK_BUTTON_COUNT > 24
                 joystick->buttons[3],
 #        endif
+#        if JOYSTICK_BUTTON_COUNT > 32
+                joystick->buttons[4],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 40
+                joystick->buttons[5],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 48
+                joystick->buttons[6],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 56
+                joystick->buttons[7],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 64
+                joystick->buttons[8],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 72
+                joystick->buttons[9],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 80
+                joystick->buttons[10],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 88
+                joystick->buttons[11],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 96
+                joystick->buttons[12],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 104
+                joystick->buttons[13],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 112
+                joystick->buttons[14],
+#        endif
+#        if JOYSTICK_BUTTON_COUNT > 120
+                joystick->buttons[15],
+#        endif
             },
 #    endif
     };
