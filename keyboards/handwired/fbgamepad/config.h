@@ -3,8 +3,11 @@
 
 #pragma once
 
-#define JOYSTICK_BUTTON_COUNT 40
+#define EXPANDED_JOYSTICK_BUTTON_COUNT 40
 #define JOYSTICK_AXIS_COUNT 0
+
+#define ENCODERS_PAD_A { A1, A2, A3 }
+#define ENCODERS_PAD_B { A2, A3, A4 }
 
 /*
  * Feature disable options

@@ -28,10 +28,17 @@
  * \{
  */
 
+#ifdef EXPANDED_JOYSTICK_BUTTON_COUNT
+#   if EXPANDED_JOYSTICK_BUTTON_COUNT > 128
+#       error Expanded joystick buttons feature only supports up to 128 buttons
+#   endif
+#   define JOYSTICK_BUTTON_COUNT (EXPANDED_JOYSTICK_BUTTON_COUNT)
+#endif
+
 #ifndef JOYSTICK_BUTTON_COUNT
 #    define JOYSTICK_BUTTON_COUNT 8
-#elif JOYSTICK_BUTTON_COUNT > 32
-#    error Joystick feature only supports up to 32 buttons
+#elif JOYSTICK_BUTTON_COUNT > 32 && !defined(EXPANDED_JOYSTICK_BUTTON_COUNT)
+#    error Joystick feature only supports up to 32 buttons, for 128 button support, please use the EXPANDED_JOYSTICK_BUTTON_COUNT
 #endif
 
 #ifndef JOYSTICK_AXIS_COUNT

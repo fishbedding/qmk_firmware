@@ -248,6 +248,8 @@ typedef struct {
 
 #if JOYSTICK_BUTTON_COUNT > 0
     uint8_t buttons[(JOYSTICK_BUTTON_COUNT - 1) / 8 + 1];
+#elif EXPANDED_JOYSTICK_BUTTON_COUNT > 0
+    uint8_t buttons[(EXPANDED_JOYSTICK_BUTTON_COUNT - 1) / 8 + 1];
 #endif
 } __attribute__((packed)) report_joystick_t;
 
