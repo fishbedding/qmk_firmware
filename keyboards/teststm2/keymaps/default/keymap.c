@@ -8,10 +8,11 @@
 
 
 enum custom_keycodes {
-    DX1 = SAFE_RANGE,
+    DX1 = 0,
     DX2,
     DX3,
-    DX4
+    DX4,
+    DX5
 };
 
 
@@ -37,14 +38,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DX1,
         DX2,
         DX3,
-        DX4
+        DX4,
+        DX5
     )
 };
 
+// RGB Indicator Customization: (100% stolen from Jetpacktuxedo)
+void keyboard_post_init_user(void) {
+  #ifdef RGBLIGHT_ENABLE
+// Set up RGB effects on _only_ the first LED (index 0):
+        rgblight_set_effect_range(0, 4);
+// Set LED effects to breathing mode in a "terminal-green" type color:
+        rgblight_sethsv_noeeprom(50, 255, 20);
+        // rgblight_mode_noeeprom(RGBLIGHT_EFFECT_BREATHING + 2);
+// Init the second LED to a static color:
+        // setrgb(225, 185, 0, (LED_TYPE *)&led[1]);
+    rgblight_set();
+  #endif // RGBLIGHT_ENABLE
+}
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (keycode == DX1 || keycode == DX2 || keycode == DX3 || keycode == DX4) {
+    if (keycode == DX3 || keycode == DX4 || keycode == DX5) {
         if (record->event.pressed) {
+            rgblight_sethsv_noeeprom(60, 255, 50);
+            register_joystick_button(keycode - DX1);
+        } else {
+            unregister_joystick_button(keycode - DX1);
+        }
+        return false;
+    }
+    else if (keycode == DX1) {
+        if (record->event.pressed) {
+            rgblight_sethsv_noeeprom(60, 255, 0);
+            register_joystick_button(keycode - DX1);
+        } else {
+            unregister_joystick_button(keycode - DX1);
+        }
+        return false;
+    }
+    else if (keycode == DX2) {
+        if (record->event.pressed) {
+            // rgblight_increase_val();
+            rgblight_decrease_val();
             register_joystick_button(keycode - DX1);
         } else {
             unregister_joystick_button(keycode - DX1);

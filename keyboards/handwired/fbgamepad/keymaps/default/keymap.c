@@ -35,18 +35,24 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             wait_ms(50);
             unregister_joystick_button(DX2 - DX1);
         }
-    } else if (index == 1) { /* Second encoder */
+    } 
+    else if (index == 1) { /* Second encoder */
         if (clockwise) {
-            tap_code_delay(KC_C, 10);
+            register_joystick_button(DX3 - DX1);
+            wait_ms(50);
+            unregister_joystick_button(DX3 - DX1);
         } else {
-            tap_code_delay(KC_D, 10);
+            register_joystick_button(DX4 - DX1);
+            wait_ms(50);
+            unregister_joystick_button(DX4 - DX1);
         }
-    } else if (index == 2) { /* Second encoder */
-        if (clockwise) {
-            tap_code_delay(KC_E, 10);
-        } else {
-            tap_code_delay(KC_F, 10);
-        }
-    }
+    } 
+    // else if (index == 2) { /* Second encoder */
+    //     if (clockwise) {
+    //         tap_code_delay(KC_E, 10);
+    //     } else {
+    //         tap_code_delay(KC_F, 10);
+    //     }
+    // }
     return false;
 }
